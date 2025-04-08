@@ -13,8 +13,8 @@ document.getElementById('diabetesForm').addEventListener('submit', async functio
         bps: document.getElementById('bps').value,
         bpd: document.getElementById('bpd').value
     };
-
-    const response = await fetch('http://127.0.0.1:5555/predict1', {
+//http://127.0.0.1:5555/predict1
+    const response = await fetch('https://diabetes-project-ewvn.onrender.com/diabetes/predict1', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
