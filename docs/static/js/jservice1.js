@@ -14,7 +14,7 @@ document.getElementById('diabetesForm').addEventListener('submit', async functio
         bpd: document.getElementById('bpd').value
     };
 
-    const response = await fetch('http://127.0.0.1:5000/predict1', {
+    const response = await fetch('http://127.0.0.1:5555/predict1', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
