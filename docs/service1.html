@@ -1,0 +1,140 @@
+<!--service1.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width", initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+        body {
+            font-family: Arial, sans-serif;
+            /*background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;*/
+            background-color: #e0f7fa; /* Light blue background for the body */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height for centering */
+            
+        }
+
+        .container{
+            background-image: url('https://garden.spoonflower.com/c/10338974/p/f/m/ec59jpePGYh0nDcN-b47N9VWA0GLp0-_JCVI6F1sobaTY8ZXdb-m_b4SLTsm/Diabetes%20in%20light%20blue%20and%20blue%20background_Smaller%20version.jpg'); /* Background image */
+            background-size: cover; /* Cover the entire container */
+            background-position: center; /* Center the background image */
+            border-radius: 20px; /* Rounded corners */
+            padding: 50px; /* Padding inside the container */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            width: 100%;
+            max-width: 650px; /* Max width for the container */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        form {
+            
+            border-radius: 10px; /* Rounded corners */
+            padding: 30px; /* Padding inside the form */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for the form */
+            width: 100%; /* Full width form */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 14px;
+            cursor: pointer;
+
+            height: 40px;
+            /* outline: none
+            border: 2px solid white */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            font-size: 12px; /* Responsive font size for button */
+            padding: 10px; /* Maintain padding */
+            border-radius: 15px; /* Rounded corners */
+            color: white; /* White text color */
+            transition: background-color 0.3s ease; /* Smooth transition */
+       
+        }
+
+        p#result1 {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #000000;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form_container">
+    
+    <form id="diabetesForm" >
+        <h1>Diabetes Prediction</h1>
+
+        <label for="gender">Gender (M/F):</label><br>
+        <input type="text" id="gender" name="gender"><br>
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age"><br>
+        <label for="fbs">Fasting Blood Sugar (FBS):</label><br>
+        <input type="number" id="fbs" name="fbs"><br>
+        <label for="ppbs">Post Prandial Blood Sugar (PPBS):</label><br>
+        <input type="number" id="ppbs" name="ppbs"><br>
+        <label for="hba1c">HbA1c:</label><br>
+        <input type="number" step="0.1" id="hba1c" name="hba1c"><br>
+        <label for="bmi">BMI:</label><br>
+        <input type="number" step="0.1" id="bmi" name="bmi"><br>
+        <label for="weight">Weight:</label><br>
+        <input type="number" step="0.1" id="weight" name="weight"><br>
+        <label for="bps">BP Systolic:</label><br>
+        <input type="number" id="bps" name="bps"><br>
+        <label for="bpd">BP Diastolic:</label><br>
+        <input type="number" id="bpd" name="bpd"><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    </div>
+    <p id="result1"></p>
+</div>
+    <script src="jservice1.js"></script>
+</body>
+</html>

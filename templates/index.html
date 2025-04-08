@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Risk Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .hidden { display: none; }
+        .selected { background-color: #ddd; }
+
+
+
+        /* Add some global styles */
+* {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2doc3-F2fZEDY97ZcskL9LzZWbB7Appdo5mAmwKR6WsjMRdvnAKNoW1fInGseJzB0Fc4&usqp=CAU');
+    
+    font-family: Arial, sans-serif; /* Set a default font for the page */
+    background-color: #e0f7fa; /* Light grey background for the body */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding around the body */
+}
+
+h1 {
+    text-align: center; /* Center the title */
+    color: #0277bd; /* Dark grey color for text */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+form {
+    /*background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2doc3-F2fZEDY97ZcskL9LzZWbB7Appdo5mAmwKR6WsjMRdvnAKNoW1fInGseJzB0Fc4&usqp=CAU');*/
+    background: white;  /*White background for the form */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the form */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 600px; /* Limit the width of the form */
+    margin: auto; /* Center the form */
+}
+
+label {
+    display: block; /* Make labels block elements */
+    margin: 10px 0 5px; /* Margin around labels */
+    color: #555; /* Medium grey color for labels */
+}
+
+input[type="number"],
+input[type="text"],
+input[type="radio"],
+input[type="checkbox"],
+select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px; /* Padding inside input fields */
+    margin-bottom: 15px; /* Space below each input field */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto; /* Auto width for radio and checkbox inputs */
+    margin-right: 10px; /* Space to the right of radio and checkbox inputs */
+}
+
+input[type="radio"]:focus,
+input[type="checkbox"]:focus,
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: #007BFF; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding inside button */
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for hidden elements */
+.hidden {
+    display: none; /* Keep hidden elements out of the layout */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px; /* Responsive font size for heading */
+    }
+
+    button {
+        font-size: 14px; /* Responsive font size for button */
+    }
+
+    form {
+        padding: 15px; /* Less padding for smaller screens */
+    }
+
+    input[type="number"],
+    input[type="text"] {
+        width: 100%; /* Make input fields full width on smaller screens */
+    }
+}
+    </style>
+    <script>
+        function toggleFamilyRelation() {
+            var familyHistory = document.querySelector('input[name="family_history"]:checked').value;
+            document.getElementById("family_relation").style.display = (familyHistory === "Yes") ? "block" : "none";
+        }
+
+        function toggleGestationalDiabetes() {
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            document.getElementById("gestational_diabetes").style.display = (gender === "Female") ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <h1>Diabetes Risk Calculator</h1>
+    <form id="riskForm" method="post" action="/predict3">
+        <label>Age:</label>
+        <input type="number" name="age" required><br>
+
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" name="weight" required><br>
+
+
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male" onclick="toggleGestationalDiabetes()" required> Male
+        <input type="radio" name="gender" value="Female" onclick="toggleGestationalDiabetes()" required> Female<br>
+
+        <div id="gestational_diabetes" class="hidden">
+            <label>Gestational Diabetes:</label>
+            <input type="radio" name="gestational_diabetes" value="Yes"> Yes
+            <input type="radio" name="gestational_diabetes" value="No" checked> No<br>
+        </div>
+
+        <label>Family History of Diabetes:</label>
+        <input type="radio" name="family_history" value="Yes" onclick="toggleFamilyRelation()" required> Yes
+        <input type="radio" name="family_history" value="No" onclick="toggleFamilyRelation()" required> No<br>
+
+        <div id="family_relation" class="hidden">
+            <label>Family Relation:</label>
+            <input type="checkbox" name="family_relation" value="Father"> Father
+            <input type="checkbox" name="family_relation" value="Mother"> Mother
+            <input type="checkbox" name="family_relation" value="Brother"> Brother
+            <input type="checkbox" name="family_relation" value="Sister"> Sister<br>
+        </div>
+
+        <label>Hypertension:</label>
+        <input type="radio" name="hypertension" value="Yes" required> Yes
+        <input type="radio" name="hypertension" value="No" required> No<br>
+
+        <label>Heart Disease:</label>
+        <input type="radio" name="heart_disease" value="Yes" required> Yes
+        <input type="radio" name="heart_disease" value="No" required> No<br>
+
+        <label>High Blood Pressure:</label>
+        <input type="radio" name="high_blood_pressure" value="Yes" required> Yes
+        <input type="radio" name="high_blood_pressure" value="No" required> No<br>
+
+        <label>Smoking Habit:</label>
+        <input type="radio" name="smoking" value="Never smoked" required> Never smoked
+        <input type="radio" name="smoking" value="Currently a smoker" required> Currently a smoker
+        <input type="radio" name="smoking" value="Former smoker" required> Former smoker<br>
+
+        <label>Alcohol Consumption:</label>
+        <input type="radio" name="alcohol" value="Yes" required> Yes
+        <input type="radio" name="alcohol" value="No" required> No<br>
+
+        <label>Sleeping Pattern:</label>
+        <input type="radio" name="sleep_pattern" value="Regular" required> Regular
+        <input type="radio" name="sleep_pattern" value="Irregular" required> Irregular<br>
+
+        <!-- Symptoms checkboxes -->
+        <label>Symptoms:</label><br>
+        <input type="checkbox" name="frequent_urination" value="Yes"> Frequent Urination<br>
+        <input type="checkbox" name="blurred_vision" value="Yes"> Blurred Vision<br>
+        <input type="checkbox" name="increase_thirst" value="Yes"> Increase Thirst<br>
+        <input type="checkbox" name="unplanned_weight_loss" value="Yes"> Unplanned Weight Loss<br>
+        <input type="checkbox" name="swelling_of_legs" value="Yes"> Swelling of Legs<br>
+        <input type="checkbox" name="fatigue" value="Yes"> Fatigue or Tiredness<br>
+
+        <button type="submit">Calculate Risk</button>
+    </form>
+</body>
+</html>
