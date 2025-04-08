@@ -1,10 +1,11 @@
 # app.py
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Blueprint
 import joblib
 import numpy as np
 from flask_cors import CORS
 
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Blueprint('risk_app', __name__, template_folder='templates')
 CORS(app)
 
 # Load the trained model
@@ -82,5 +83,5 @@ def predict():
     # Render the result page with the risk label
     return render_template('result.html', prediction=risk_label)
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5000)
