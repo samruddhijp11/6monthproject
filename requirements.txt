@@ -1,7 +1,6 @@
 Flask
 numpy
 scikit-learn==1.5.2
-pickle5
 pickle-mixin
 flask-cors
 joblib
