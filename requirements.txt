@@ -3,3 +3,5 @@ numpy
 scikit-learn
 pickle-mixin
 flask-cors
+joblib
+gunicorn
