@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 import pickle
 import numpy as np
 from flask_cors import CORS
 
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Blueprint('diabetes_app', __name__)
 CORS(app)
 
 # Load model and scaler
@@ -31,5 +32,5 @@ def predict1():
 
     return jsonify({'prediction': output})
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5555)
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5555)
