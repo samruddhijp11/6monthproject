@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: diabetes-risk-calculator
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    branch: main
+    plan: free
+    envVars:
+      - key: PORT
+        value: 10000
