@@ -1,14 +1,13 @@
+# main.py
 from flask import Flask
-from app import app as app1_blueprint
-from app1 import app as app2_blueprint
+from app import app as risk_app
+from app1 import app as diabetes_app
 
 app = Flask(__name__)
 
-# Register routes from app.py
-app.register_blueprint(app1_blueprint, url_prefix="/predict")
+# Register both apps as blueprints
+app.register_blueprint(risk_app, url_prefix='/risk')
+app.register_blueprint(diabetes_app, url_prefix='/diabetes')
 
-# Register routes from app1.py
-app.register_blueprint(app2_blueprint, url_prefix="/risk")
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
