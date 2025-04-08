@@ -43,7 +43,7 @@ def encode_input(data):
 # Route for the homepage
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index1.html')
 
 # Route for handling the form submission
 @app.route('/predict3', methods=['POST'])
