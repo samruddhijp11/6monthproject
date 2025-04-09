@@ -48,7 +48,7 @@ def index():
 
 # Route for handling the form submission
 @app.route('/predict3', methods=['POST'])
-def predict():
+def predict3():
     # Get form data and prepare it in a dictionary
     data = {
         'age': int(request.form['age']),
@@ -75,7 +75,7 @@ def predict():
     input_data = encode_input(data)
     
     # Predict using the model
-    prediction = model3.predict(input_data)[0]
+    prediction = model3.predict3(input_data)[0]
     
      # Map prediction to risk labels
     risk_label = "Low Risk" if prediction == 1 else "High Risk"
