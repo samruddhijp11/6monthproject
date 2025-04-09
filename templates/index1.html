@@ -129,7 +129,7 @@ button:hover {
 </head>
 <body>
     <h1>Diabetes Risk Calculator</h1>
-    <form id="riskForm" method="post" action="https://diabetes-project-ewvn.onrender.com/risk/predict3">
+    <form id="riskForm" method="POST" action="/risk/predict3">
         <label>Age:</label>
         <input type="number" name="age" required><br>
 
@@ -195,10 +195,13 @@ button:hover {
         <input type="checkbox" name="fatigue" value="Yes"> Fatigue or Tiredness<br>
 
         <button type="submit">Calculate Risk</button>
+
+        {% if prediction %}
+        <div class="result">
+            <strong>Your Risk Level: {{ prediction }}</strong>
+        </div>
+        {% endif %}
     </form>
-    <div class="result">
-        <h2>Prediction Result:</h2>
-        <p>{{ prediction }}</p>
-    </div>
+    
 </body>
 </html>
