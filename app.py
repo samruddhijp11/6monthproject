@@ -75,7 +75,7 @@ def predict3():
     input_data = encode_input(data)
     
     # Predict using the model
-    prediction = model3.predict3(input_data)[0]
+    prediction = model3.predict(input_data)[0]
     
      # Map prediction to risk labels
     risk_label = "Low Risk" if prediction == 1 else "High Risk"
