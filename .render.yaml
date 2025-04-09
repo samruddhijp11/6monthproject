@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: diabetes-app
+    runtime: python
+    buildCommand: ""
+    startCommand: gunicorn main:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PORT
+        value: 10000
