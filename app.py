@@ -47,7 +47,7 @@ def index():
     return render_template('index1.html')
 
 # Route for handling the form submission
-@app.route('/risk/predict3', methods=['POST'])
+@app.route('/predict3', methods=['POST'])
 def predict():
     # Get form data and prepare it in a dictionary
     data = {
