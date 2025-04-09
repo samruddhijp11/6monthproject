@@ -81,7 +81,7 @@ def predict():
     risk_label = "Low Risk" if prediction == 1 else "High Risk"
     
     # Render the result page with the risk label
-    return render_template('result.html', prediction=risk_label)
+    return render_template('index1.html', prediction=risk_label)
 
 # if __name__ == '__main__':
 #     app.run(debug=True, port=5000)
